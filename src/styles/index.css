@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Sharp');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* TYPOGRAPHY */
+  .small-caps {
+    font-feature-settings: 'smcp';
+  }
+  .force-wrap {
+    word-spacing: 100vw;
+  }
+  /* ICON FONT */
+  .icon-xs {
+    @apply material-icons-sharp;
+    @apply text-xs;
+  }
+  .icon-sm {
+    @apply material-icons-sharp;
+    @apply text-sm;
+  }
+  .icon-base {
+    @apply material-icons-sharp;
+    @apply text-base;
+  }
+  .icon-lg {
+    @apply material-icons-sharp;
+    @apply text-lg;
+  }
+  .icon-xl {
+    @apply material-icons-sharp;
+    @apply text-xl;
+  }
+  .icon-2xl {
+    @apply material-icons-sharp;
+    @apply text-2xl;
+  }
+  .icon-3xl {
+    @apply material-icons-sharp;
+    @apply text-3xl;
+  }
+  .icon-4xl {
+    @apply material-icons-sharp;
+    @apply text-4xl;
+  }
+  .icon-outline {
+    @apply material-icons-outlined;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+}

@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { Provider } from 'react-redux';
+import ReactGA from 'react-ga';
+import store from './store';
+import Home from './pages/Home';
+import './styles/compiled.css';
 
-function App() {
+const history = createBrowserHistory();
+const trackingId = process.env.REACT_APP_GA_TRACKING || '';
+ReactGA.initialize(trackingId, {
+  gaOptions: {
+    siteSpeedSampleRate: 100,
+  },
+});
+history.listen(() => {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+});
+
+export default function App() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className='App'>
+        <BrowserRouter basename='/'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </Provider>
   );
 }
-
-export default App;
